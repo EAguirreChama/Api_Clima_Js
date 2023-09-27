@@ -21,19 +21,24 @@ function mostrarDatosClima(res){
     divDatosClima.innerHTML = ''
 
     const nombreCiudad = res.name
+    const paisNombre = res.sys.country
     const tempCiudad = res.main.temp
-    const descripCiudad = res.weather[0].descripcion
+    // const descripCiudad = res.weather[0].description
 
     // Creando Elementos HTML
     // Titulo
     const ciudadTitulo = document.createElement('h2')
-    ciudadTitulo.textContent = nombreCiudad
+    ciudadTitulo.textContent = `${nombreCiudad}, ${paisNombre}`
 
     // Temperatura
     const tempInfo = document.createElement('p')
-    tempInfo.textContent = `La temperatura es: ${tempCiudad - difKelvin}°C`
+    tempInfo.textContent = `La temperatura es: ${Math.floor(tempCiudad - difKelvin)}°C`
 
     // Descripción
-    const descripInfo = document.createElement('p')
-    descripInfo.textContent = descripCiudad
+    // const descripInfo = document.createElement('p')
+    // descripInfo.textContent = descripCiudad
+
+    divDatosClima.appendChild(ciudadTitulo)
+    // divDatosClima.appendChild(descripInfo)
+    divDatosClima.appendChild(tempInfo)
 }
